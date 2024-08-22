@@ -1,5 +1,7 @@
 import "./App.css";
 import verbs from "./data/verbs.json";
+import Board from "./components/Board";
+import { RandomVerbsListInterface } from "./interfaces/RandomVerbsListInterface";
 
 function App() {
   const rows = 2;
@@ -26,7 +28,10 @@ function App() {
     return result;
   };
 
-  const randomVerbsList = getRandomVerbs(verdList, totalVerbs);
+  const randomVerbsList: RandomVerbsListInterface[] = getRandomVerbs(
+    verdList,
+    totalVerbs
+  );
 
   // llenar de forma random los verbos seleccionados en la tabla
   const fillBoardWithVerbs = () => {
@@ -49,18 +54,7 @@ function App() {
   return (
     <div>
       <h1>English memory game</h1>
-      {board.map((row, rowIndex) => (
-        <div key={rowIndex}>
-          {row.map((verb, colIndex) => (
-            <div
-              key={colIndex}
-              style={{ padding: "10px", border: "1px solid black" }}
-            >
-              {verb}
-            </div>
-          ))}
-        </div>
-      ))}
+      <Board board={board} randomVerbsList={randomVerbsList} />
     </div>
   );
 }
