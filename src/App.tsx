@@ -1,7 +1,68 @@
 import "./App.css";
+import verbs from "./data/verbs.json";
 
 function App() {
-  return <div>English memory game</div>;
+  const rows = 2;
+  const columns = 3;
+  const totalVerbs = (rows * columns) / 2;
+  const board: string[][] = [];
+  const verdList = [...verbs];
+
+  // Inicializa el tablero vacío
+  for (let x = 0; x < rows; x++) {
+    board[x] = [];
+    for (let y = 0; y < columns; y++) {
+      board[x].push("verb");
+    }
+  }
+
+  // Función para obtener verbos aleatorios
+  const getRandomVerbs = (list: typeof verbs, count: number) => {
+    const result = [];
+    for (let i = 0; i < count; i++) {
+      const randomIndex = Math.floor(Math.random() * list.length);
+      result.push(list.splice(randomIndex, 1)[0]);
+    }
+    return result;
+  };
+
+  const randomVerbsList = getRandomVerbs(verdList, totalVerbs);
+
+  // llenar de forma random los verbos seleccionados en la tabla
+  const fillBoardWithVerbs = () => {
+    randomVerbsList.forEach(({ verb, forms: { past } }) => {
+      const placeVerb = (verb: string) => {
+        let row, col;
+        do {
+          row = Math.floor(Math.random() * rows);
+          col = Math.floor(Math.random() * columns);
+        } while (board[row][col] !== "verb");
+        board[row][col] = verb;
+      };
+      placeVerb(verb);
+      placeVerb(past);
+    });
+  };
+
+  fillBoardWithVerbs();
+
+  return (
+    <div>
+      <h1>English memory game</h1>
+      {board.map((row, rowIndex) => (
+        <div key={rowIndex}>
+          {row.map((verb, colIndex) => (
+            <div
+              key={colIndex}
+              style={{ padding: "10px", border: "1px solid black" }}
+            >
+              {verb}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default App;

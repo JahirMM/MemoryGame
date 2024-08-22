@@ -1,0 +1,192 @@
+[
+  {
+    "verb": "go",
+    "forms": {
+      "present": "go",
+      "past": "went",
+      "pastParticiple": "gone",
+      "presentParticiple": "going",
+      "thirdPersonSingular": "goes"
+    }
+  },
+  {
+    "verb": "eat",
+    "forms": {
+      "present": "eat",
+      "past": "ate",
+      "pastParticiple": "eaten",
+      "presentParticiple": "eating",
+      "thirdPersonSingular": "eats"
+    }
+  },
+  {
+    "verb": "have",
+    "forms": {
+      "present": "have",
+      "past": "had",
+      "pastParticiple": "had",
+      "presentParticiple": "having",
+      "thirdPersonSingular": "has"
+    }
+  },
+  {
+    "verb": "take",
+    "forms": {
+      "present": "take",
+      "past": "took",
+      "pastParticiple": "taken",
+      "presentParticiple": "taking",
+      "thirdPersonSingular": "takes"
+    }
+  },
+  {
+    "verb": "do",
+    "forms": {
+      "present": "do",
+      "past": "did",
+      "pastParticiple": "done",
+      "presentParticiple": "doing",
+      "thirdPersonSingular": "does"
+    }
+  },
+  {
+    "verb": "make",
+    "forms": {
+      "present": "make",
+      "past": "made",
+      "pastParticiple": "made",
+      "presentParticiple": "making",
+      "thirdPersonSingular": "makes"
+    }
+  },
+  {
+    "verb": "see",
+    "forms": {
+      "present": "see",
+      "past": "saw",
+      "pastParticiple": "seen",
+      "presentParticiple": "seeing",
+      "thirdPersonSingular": "sees"
+    }
+  },
+  {
+    "verb": "come",
+    "forms": {
+      "present": "come",
+      "past": "came",
+      "pastParticiple": "come",
+      "presentParticiple": "coming",
+      "thirdPersonSingular": "comes"
+    }
+  },
+  {
+    "verb": "get",
+    "forms": {
+      "present": "get",
+      "past": "got",
+      "pastParticiple": "gotten",
+      "presentParticiple": "getting",
+      "thirdPersonSingular": "gets"
+    }
+  },
+  {
+    "verb": "give",
+    "forms": {
+      "present": "give",
+      "past": "gave",
+      "pastParticiple": "given",
+      "presentParticiple": "giving",
+      "thirdPersonSingular": "gives"
+    }
+  },
+  {
+    "verb": "find",
+    "forms": {
+      "present": "find",
+      "past": "found",
+      "pastParticiple": "found",
+      "presentParticiple": "finding",
+      "thirdPersonSingular": "finds"
+    }
+  },
+  {
+    "verb": "think",
+    "forms": {
+      "present": "think",
+      "past": "thought",
+      "pastParticiple": "thought",
+      "presentParticiple": "thinking",
+      "thirdPersonSingular": "thinks"
+    }
+  },
+  {
+    "verb": "know",
+    "forms": {
+      "present": "know",
+      "past": "knew",
+      "pastParticiple": "known",
+      "presentParticiple": "knowing",
+      "thirdPersonSingular": "knows"
+    }
+  },
+  {
+    "verb": "tell",
+    "forms": {
+      "present": "tell",
+      "past": "told",
+      "pastParticiple": "told",
+      "presentParticiple": "telling",
+      "thirdPersonSingular": "tells"
+    }
+  },
+  {
+    "verb": "feel",
+    "forms": {
+      "present": "feel",
+      "past": "felt",
+      "pastParticiple": "felt",
+      "presentParticiple": "feeling",
+      "thirdPersonSingular": "feels"
+    }
+  },
+  {
+    "verb": "leave",
+    "forms": {
+      "present": "leave",
+      "past": "left",
+      "pastParticiple": "left",
+      "presentParticiple": "leaving",
+      "thirdPersonSingular": "leaves"
+    }
+  },
+  {
+    "verb": "put",
+    "forms": {
+      "present": "put",
+      "past": "put",
+      "pastParticiple": "put",
+      "presentParticiple": "putting",
+      "thirdPersonSingular": "puts"
+    }
+  },
+  {
+    "verb": "bring",
+    "forms": {
+      "present": "bring",
+      "past": "brought",
+      "pastParticiple": "brought",
+      "presentParticiple": "bringing",
+      "thirdPersonSingular": "brings"
+    }
+  },
+  {
+    "verb": "begin",
+    "forms": {
+      "present": "begin",
+      "past": "began",
+      "pastParticiple": "begun",
+      "presentParticiple": "beginning",
+      "thirdPersonSingular": "begins"
+    }
+  }
+]
