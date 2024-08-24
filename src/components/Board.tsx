@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { RandomVerbsListInterface } from "../interfaces/RandomVerbsListInterface";
 
+import "../styles/boardStyles.css";
+
 interface BoardInterface {
   board: string[][];
   randomVerbsList: RandomVerbsListInterface[];
@@ -9,8 +11,11 @@ interface BoardInterface {
 function Board({ board, randomVerbsList }: BoardInterface) {
   const [firstVerbSelected, setFirstVerbSelected] = useState("");
   const [secondVerbSelected, setSecondVerbSelected] = useState("");
+  // Combina todos los verbos en una sola lista
+  const combinedVerbs = board.flat();
 
   useEffect(() => {
+    const totalcards = Array.from(document.getElementsByClassName("correct"));
     if (firstVerbSelected !== "" && secondVerbSelected !== "") {
       const matchedVerb = randomVerbsList.find(
         (item) =>
@@ -20,15 +25,28 @@ function Board({ board, randomVerbsList }: BoardInterface) {
             isMatchingPastForm(item, firstVerbSelected))
       );
 
+      const cards = Array.from(
+        document.getElementsByClassName("verb_selected")
+      );
       if (matchedVerb) {
         console.log("Match found!");
         setFirstVerbSelected("");
         setSecondVerbSelected("");
+        cards.forEach((card) => {
+          card.classList.remove("verb_selected");
+          card.classList.add("correct");
+        });
       } else {
-        console.log("Match not found!");
+        console.log("Match not found!dd ");
         setFirstVerbSelected("");
         setSecondVerbSelected("");
+        cards.forEach((card) => {
+          card.classList.remove("verb_selected");
+        });
       }
+    }
+    if (combinedVerbs.length === totalcards.length) {
+      alert("GANASTE");
     }
   }, [firstVerbSelected, secondVerbSelected, randomVerbsList]);
 
@@ -39,31 +57,31 @@ function Board({ board, randomVerbsList }: BoardInterface) {
     return verb.forms.past === selectedVerb;
   };
 
-  const handleClick = (verb: string) => {
-    console.log(verb);
+  const handleClick = (verb: string, event: any) => {
+    const id = event.target.id;
+    const card = document.getElementById(id);
     if (!firstVerbSelected) {
       setFirstVerbSelected(verb);
+      card?.classList.add("verb_selected");
     } else if (!secondVerbSelected) {
+      card?.classList.add("verb_selected");
       setSecondVerbSelected(verb);
     }
   };
 
   return (
-    <>
-      {board.map((row, rowIndex) => (
-        <div key={rowIndex}>
-          {row.map((verb, colIndex) => (
-            <div
-              key={colIndex}
-              onClick={() => handleClick(verb)}
-              style={{ padding: "10px", border: "1px solid black" }}
-            >
-              {verb}
-            </div>
-          ))}
+    <div className="board">
+      {combinedVerbs.map((verb, index) => (
+        <div
+          key={index}
+          id={index + "verb"}
+          onClick={(event) => handleClick(verb, event)}
+          className="board-card"
+        >
+          {verb}
         </div>
       ))}
-    </>
+    </div>
   );
 }
 

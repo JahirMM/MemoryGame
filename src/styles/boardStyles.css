@@ -1,0 +1,28 @@
+:root {
+  --columnsEasyMode: 3;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(var(--columnsEasyMode), 1fr);
+  gap: 20px;
+}
+
+.board-card {
+  background-color: rgb(77, 77, 222);
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  font-size: 2rem;
+  padding: 70px 0px 70px 0px;
+}
+
+.verb_selected {
+  background-color: aqua;
+}
+
+.correct {
+  background-color: brown;
+}

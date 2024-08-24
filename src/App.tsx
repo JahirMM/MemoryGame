@@ -1,4 +1,4 @@
-import "./App.css";
+import "./styles/AppStyles.css";
 import verbs from "./data/verbs.json";
 import Board from "./components/Board";
 import { RandomVerbsListInterface } from "./interfaces/RandomVerbsListInterface";
@@ -52,7 +52,7 @@ function App() {
   fillBoardWithVerbs();
 
   return (
-    <div>
+    <div className="container">
       <h1>English memory game</h1>
       <Board board={board} randomVerbsList={randomVerbsList} />
     </div>
