@@ -1,8 +1,15 @@
 export const useRemoveCorrectClass = () => {
   const removeCorrectClass = () => {
-    const cards = Array.from(document.getElementsByClassName("correct"));
-    cards.forEach((item) => {
+    const correctCards = Array.from(document.getElementsByClassName("correct"));
+    correctCards.forEach((item) => {
       item.classList.remove("correct");
+    });
+
+    const selectedCards = Array.from(
+      document.getElementsByClassName("verb-selected")
+    );
+    selectedCards.forEach((item) => {
+      item.classList.remove("verb-selected");
     });
   };
 
