@@ -9,6 +9,7 @@
 }
 
 .board-card {
+  position: relative;
   background-color: rgb(77, 77, 222);
   color: aliceblue;
   display: flex;
@@ -17,12 +18,33 @@
   border-radius: 20px;
   font-size: 2rem;
   padding: 70px 0px 70px 0px;
+  transform: rotateY(180deg);
+  transition: 0.25s;
 }
 
-.verb_selected {
-  background-color: aqua;
+.board-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: yellow;
+  transition: 0.25s;
+  transform: rotateY(0deg);
+  backface-visibility: hidden;
+}
+
+.board-card.verb-selected {
+  transform: rotateY(0deg);
+}
+
+.verb-selected::after,
+.correct::after {
+  transform: rotateY(180deg);
 }
 
 .correct {
-  background-color: brown;
+  transform: rotateY(0deg);
+}
+
+.correct > * {
+  transform: rotateY(0deg);
 }

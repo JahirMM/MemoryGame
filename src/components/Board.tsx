@@ -11,12 +11,13 @@ interface BoardInterface {
 function Board({ board, randomVerbsList }: BoardInterface) {
   const [firstVerbSelected, setFirstVerbSelected] = useState("");
   const [secondVerbSelected, setSecondVerbSelected] = useState("");
-  // Combina todos los verbos en una sola lista
+  const [matchedCards, setMatchedCards] = useState<number[]>([]);
+  const [revealedCards, setRevealedCards] = useState<number[]>([]);
+
   const combinedVerbs = board.flat();
 
   useEffect(() => {
-    const totalcards = Array.from(document.getElementsByClassName("correct"));
-    if (firstVerbSelected !== "" && secondVerbSelected !== "") {
+    if (firstVerbSelected && secondVerbSelected && matchedCards.length < 6) {
       const matchedVerb = randomVerbsList.find(
         (item) =>
           (item.verb === firstVerbSelected &&
@@ -25,28 +26,15 @@ function Board({ board, randomVerbsList }: BoardInterface) {
             isMatchingPastForm(item, firstVerbSelected))
       );
 
-      const cards = Array.from(
-        document.getElementsByClassName("verb_selected")
-      );
       if (matchedVerb) {
-        console.log("Match found!");
-        setFirstVerbSelected("");
-        setSecondVerbSelected("");
-        cards.forEach((card) => {
-          card.classList.remove("verb_selected");
-          card.classList.add("correct");
-        });
-      } else {
-        console.log("Match not found!dd ");
-        setFirstVerbSelected("");
-        setSecondVerbSelected("");
-        cards.forEach((card) => {
-          card.classList.remove("verb_selected");
-        });
+        const newMatchedCards = [...revealedCards];
+        setMatchedCards((prev) => [...prev, ...newMatchedCards]);
       }
-    }
-    if (combinedVerbs.length === totalcards.length) {
-      alert("GANASTE");
+      setTimeout(() => {
+        setFirstVerbSelected("");
+        setSecondVerbSelected("");
+        setRevealedCards([]);
+      }, 500);
     }
   }, [firstVerbSelected, secondVerbSelected, randomVerbsList]);
 
@@ -57,15 +45,13 @@ function Board({ board, randomVerbsList }: BoardInterface) {
     return verb.forms.past === selectedVerb;
   };
 
-  const handleClick = (verb: string, event: any) => {
-    const id = event.target.id;
-    const card = document.getElementById(id);
+  const handleClick = (verb: string, index: number) => {
     if (!firstVerbSelected) {
       setFirstVerbSelected(verb);
-      card?.classList.add("verb_selected");
+      setRevealedCards([index]);
     } else if (!secondVerbSelected) {
-      card?.classList.add("verb_selected");
       setSecondVerbSelected(verb);
+      setRevealedCards((prev) => [...prev, index]);
     }
   };
 
@@ -75,8 +61,10 @@ function Board({ board, randomVerbsList }: BoardInterface) {
         <div
           key={index}
           id={index + "verb"}
-          onClick={(event) => handleClick(verb, event)}
-          className="board-card"
+          onClick={() => handleClick(verb, index)}
+          className={`board-card ${
+            revealedCards.includes(index) ? "verb-selected" : ""
+          } ${matchedCards.includes(index) ? "correct" : ""}`}
         >
           {verb}
         </div>
