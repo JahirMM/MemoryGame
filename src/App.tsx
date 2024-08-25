@@ -6,8 +6,11 @@ import verbs from "./data/verbs.json";
 import Board from "./components/Board";
 
 import { RandomVerbsListInterface } from "./interfaces/RandomVerbsListInterface";
+import { useRemoveCorrectClass } from "./hooks/useRemoveCorrectClass";
 
 function App() {
+  const { removeCorrectClass } = useRemoveCorrectClass();
+
   const levels = [
     {
       level: "Easy",
@@ -96,25 +99,25 @@ function App() {
       setRows(rows);
       setColumns(columns);
       setCSSVariable("--columns", columns.toString());
+      removeCorrectClass();
     }
     if (level === "Medium") {
       setRows(rows);
       setColumns(columns);
       setCSSVariable("--columns", columns.toString());
+      removeCorrectClass();
     }
     if (level === "Difficulty") {
       setRows(rows);
       setColumns(columns);
       setCSSVariable("--columns", columns.toString());
+      removeCorrectClass();
     }
   };
 
   const handleResetGame = () => {
     generateBoard(rows, columns);
-    const cards = Array.from(document.getElementsByClassName("correct"));
-    cards.map((item) => {
-      item.classList.remove("correct");
-    });
+    removeCorrectClass();
   };
 
   useEffect(() => {
