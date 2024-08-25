@@ -6,9 +6,10 @@ import "../styles/boardStyles.css";
 interface BoardInterface {
   board: string[][];
   randomVerbsList: RandomVerbsListInterface[];
+  totalVerbs: number;
 }
 
-function Board({ board, randomVerbsList }: BoardInterface) {
+function Board({ board, randomVerbsList, totalVerbs }: BoardInterface) {
   const [firstVerbSelected, setFirstVerbSelected] = useState("");
   const [secondVerbSelected, setSecondVerbSelected] = useState("");
   const [matchedCards, setMatchedCards] = useState<number[]>([]);
@@ -17,7 +18,11 @@ function Board({ board, randomVerbsList }: BoardInterface) {
   const combinedVerbs = board.flat();
 
   useEffect(() => {
-    if (firstVerbSelected && secondVerbSelected && matchedCards.length < 6) {
+    if (
+      firstVerbSelected &&
+      secondVerbSelected &&
+      matchedCards.length < totalVerbs
+    ) {
       const matchedVerb = randomVerbsList.find(
         (item) =>
           (item.verb === firstVerbSelected &&

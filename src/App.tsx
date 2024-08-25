@@ -6,7 +6,8 @@ import { RandomVerbsListInterface } from "./interfaces/RandomVerbsListInterface"
 function App() {
   const rows = 2;
   const columns = 3;
-  const totalVerbs = (rows * columns) / 2;
+  const totalVerbsInPresent = (rows * columns) / 2;
+  const totalVerbs = rows * columns;
   const board: string[][] = [];
   const verdList = [...verbs];
 
@@ -30,7 +31,7 @@ function App() {
 
   const randomVerbsList: RandomVerbsListInterface[] = getRandomVerbs(
     verdList,
-    totalVerbs
+    totalVerbsInPresent
   );
 
   // llenar de forma random los verbos seleccionados en la tabla
@@ -54,7 +55,11 @@ function App() {
   return (
     <div className="container">
       <h1>English memory game</h1>
-      <Board board={board} randomVerbsList={randomVerbsList} />
+      <Board
+        board={board}
+        randomVerbsList={randomVerbsList}
+        totalVerbs={totalVerbs}
+      />
     </div>
   );
 }
