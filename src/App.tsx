@@ -3,15 +3,22 @@ import { useEffect, useState } from "react";
 
 import verbs from "./data/verbs.json";
 
+// COMPONETS
 import Board from "./components/Board";
+import LevelSelector from "./components/LevelSelector";
 
+// INTERFACES
 import { RandomVerbsListInterface } from "./interfaces/RandomVerbsListInterface";
+import { LevelInterface } from "./interfaces/LevelInterface";
+import ResetGame from "./components/ResetGame";
+
+// HOOK
 import { useRemoveCorrectClass } from "./hooks/useRemoveCorrectClass";
 
 function App() {
   const { removeCorrectClass } = useRemoveCorrectClass();
 
-  const levels = [
+  const levels: LevelInterface[] = [
     {
       level: "Easy",
       rows: 2,
@@ -88,38 +95,6 @@ function App() {
     setRandomVerbsList(randomVerbs);
   };
 
-  // cambiar la cantidad de columnas de la variable css
-  const setCSSVariable = (variable: string, value: string) => {
-    document.documentElement.style.setProperty(variable, value);
-  };
-
-  // cambiar la dificultar del juego
-  const handleChangeLevel = (level: string, rows: number, columns: number) => {
-    if (level === "Easy") {
-      setRows(rows);
-      setColumns(columns);
-      setCSSVariable("--columns", columns.toString());
-      removeCorrectClass();
-    }
-    if (level === "Medium") {
-      setRows(rows);
-      setColumns(columns);
-      setCSSVariable("--columns", columns.toString());
-      removeCorrectClass();
-    }
-    if (level === "Difficulty") {
-      setRows(rows);
-      setColumns(columns);
-      setCSSVariable("--columns", columns.toString());
-      removeCorrectClass();
-    }
-  };
-
-  const handleResetGame = () => {
-    generateBoard(rows, columns);
-    removeCorrectClass();
-  };
-
   useEffect(() => {
     generateBoard(rows, columns);
   }, [rows, columns]);
@@ -127,24 +102,22 @@ function App() {
   return (
     <div className="container">
       <h1>English memory game</h1>
-      <div>
-        {levels.map((item, index) => (
-          <button
-            key={index}
-            onClick={() =>
-              handleChangeLevel(item.level, item.rows, item.columns)
-            }
-          >
-            {item.level}
-          </button>
-        ))}
-      </div>
+      <LevelSelector
+        levels={levels}
+        setRows={setRows}
+        setColumns={setColumns}
+      />
       <Board
         board={board}
         randomVerbsList={randomVerbsList}
         totalVerbs={totalVerbs}
       />
-      <button onClick={() => handleResetGame()}>reset game</button>
+      <ResetGame
+        rows={rows}
+        columns={columns}
+        generateBoard={generateBoard}
+        removeCorrectClass={removeCorrectClass}
+      />
     </div>
   );
 }
