@@ -85,23 +85,36 @@ function App() {
     setRandomVerbsList(randomVerbs);
   };
 
+  // cambiar la cantidad de columnas de la variable css
+  const setCSSVariable = (variable: string, value: string) => {
+    document.documentElement.style.setProperty(variable, value);
+  };
+
   // cambiar la dificultar del juego
   const handleChangeLevel = (level: string, rows: number, columns: number) => {
     if (level === "Easy") {
       setRows(rows);
       setColumns(columns);
-      console.log("facil");
+      setCSSVariable("--columns", columns.toString());
     }
     if (level === "Medium") {
       setRows(rows);
       setColumns(columns);
-      console.log("medio");
+      setCSSVariable("--columns", columns.toString());
     }
     if (level === "Difficulty") {
       setRows(rows);
       setColumns(columns);
-      console.log("dificil");
+      setCSSVariable("--columns", columns.toString());
     }
+  };
+
+  const handleResetGame = () => {
+    generateBoard(rows, columns);
+    const cards = Array.from(document.getElementsByClassName("correct"));
+    cards.map((item) => {
+      item.classList.remove("correct");
+    });
   };
 
   useEffect(() => {
@@ -128,7 +141,7 @@ function App() {
         randomVerbsList={randomVerbsList}
         totalVerbs={totalVerbs}
       />
-      <button onClick={() => generateBoard(rows, columns)}>reset game</button>
+      <button onClick={() => handleResetGame()}>reset game</button>
     </div>
   );
 }

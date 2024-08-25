@@ -1,10 +1,10 @@
 :root {
-  --columnsEasyMode: 3;
+  --columns: 4;
 }
 
 .board {
   display: grid;
-  grid-template-columns: repeat(var(--columnsEasyMode), 1fr);
+  grid-template-columns: repeat(var(--columns), 1fr);
   gap: 20px;
 }
 
@@ -26,7 +26,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-color: transparent;
+  background-color: yellow;
   transition: 0.25s;
   transform: rotateY(0deg);
   backface-visibility: hidden;
