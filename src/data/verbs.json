@@ -188,5 +188,205 @@
       "presentParticiple": "beginning",
       "thirdPersonSingular": "begins"
     }
+  },
+  {
+    "verb": "run",
+    "forms": {
+      "present": "run",
+      "past": "ran",
+      "pastParticiple": "run",
+      "presentParticiple": "running",
+      "thirdPersonSingular": "runs"
+    }
+  },
+  {
+    "verb": "speak",
+    "forms": {
+      "present": "speak",
+      "past": "spoke",
+      "pastParticiple": "spoken",
+      "presentParticiple": "speaking",
+      "thirdPersonSingular": "speaks"
+    }
+  },
+  {
+    "verb": "write",
+    "forms": {
+      "present": "write",
+      "past": "wrote",
+      "pastParticiple": "written",
+      "presentParticiple": "writing",
+      "thirdPersonSingular": "writes"
+    }
+  },
+  {
+    "verb": "read",
+    "forms": {
+      "present": "read",
+      "past": "read",
+      "pastParticiple": "read",
+      "presentParticiple": "reading",
+      "thirdPersonSingular": "reads"
+    }
+  },
+  {
+    "verb": "drive",
+    "forms": {
+      "present": "drive",
+      "past": "drove",
+      "pastParticiple": "driven",
+      "presentParticiple": "driving",
+      "thirdPersonSingular": "drives"
+    }
+  },
+  {
+    "verb": "meet",
+    "forms": {
+      "present": "meet",
+      "past": "met",
+      "pastParticiple": "met",
+      "presentParticiple": "meeting",
+      "thirdPersonSingular": "meets"
+    }
+  },
+  {
+    "verb": "sleep",
+    "forms": {
+      "present": "sleep",
+      "past": "slept",
+      "pastParticiple": "slept",
+      "presentParticiple": "sleeping",
+      "thirdPersonSingular": "sleeps"
+    }
+  },
+  {
+    "verb": "catch",
+    "forms": {
+      "present": "catch",
+      "past": "caught",
+      "pastParticiple": "caught",
+      "presentParticiple": "catching",
+      "thirdPersonSingular": "catches"
+    }
+  },
+  {
+    "verb": "buy",
+    "forms": {
+      "present": "buy",
+      "past": "bought",
+      "pastParticiple": "bought",
+      "presentParticiple": "buying",
+      "thirdPersonSingular": "buys"
+    }
+  },
+  {
+    "verb": "sell",
+    "forms": {
+      "present": "sell",
+      "past": "sold",
+      "pastParticiple": "sold",
+      "presentParticiple": "selling",
+      "thirdPersonSingular": "sells"
+    }
+  },
+  {
+    "verb": "choose",
+    "forms": {
+      "present": "choose",
+      "past": "chose",
+      "pastParticiple": "chosen",
+      "presentParticiple": "choosing",
+      "thirdPersonSingular": "chooses"
+    }
+  },
+  {
+    "verb": "fall",
+    "forms": {
+      "present": "fall",
+      "past": "fell",
+      "pastParticiple": "fallen",
+      "presentParticiple": "falling",
+      "thirdPersonSingular": "falls"
+    }
+  },
+  {
+    "verb": "teach",
+    "forms": {
+      "present": "teach",
+      "past": "taught",
+      "pastParticiple": "taught",
+      "presentParticiple": "teaching",
+      "thirdPersonSingular": "teaches"
+    }
+  },
+  {
+    "verb": "win",
+    "forms": {
+      "present": "win",
+      "past": "won",
+      "pastParticiple": "won",
+      "presentParticiple": "winning",
+      "thirdPersonSingular": "wins"
+    }
+  },
+  {
+    "verb": "lose",
+    "forms": {
+      "present": "lose",
+      "past": "lost",
+      "pastParticiple": "lost",
+      "presentParticiple": "losing",
+      "thirdPersonSingular": "loses"
+    }
+  },
+  {
+    "verb": "build",
+    "forms": {
+      "present": "build",
+      "past": "built",
+      "pastParticiple": "built",
+      "presentParticiple": "building",
+      "thirdPersonSingular": "builds"
+    }
+  },
+  {
+    "verb": "bring",
+    "forms": {
+      "present": "bring",
+      "past": "brought",
+      "pastParticiple": "brought",
+      "presentParticiple": "bringing",
+      "thirdPersonSingular": "brings"
+    }
+  },
+  {
+    "verb": "break",
+    "forms": {
+      "present": "break",
+      "past": "broke",
+      "pastParticiple": "broken",
+      "presentParticiple": "breaking",
+      "thirdPersonSingular": "breaks"
+    }
+  },
+  {
+    "verb": "cut",
+    "forms": {
+      "present": "cut",
+      "past": "cut",
+      "pastParticiple": "cut",
+      "presentParticiple": "cutting",
+      "thirdPersonSingular": "cuts"
+    }
+  },
+  {
+    "verb": "throw",
+    "forms": {
+      "present": "throw",
+      "past": "threw",
+      "pastParticiple": "thrown",
+      "presentParticiple": "throwing",
+      "thirdPersonSingular": "throws"
+    }
   }
 ]
