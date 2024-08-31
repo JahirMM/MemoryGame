@@ -1,4 +1,3 @@
-import "./styles/AppStyles.css";
 import { useEffect, useState } from "react";
 
 import verbs from "./data/verbs.json";
@@ -13,6 +12,8 @@ import MatchedPairsList from "./components/MatchedPairsList";
 import { LevelInterface } from "./interfaces/LevelInterface";
 import { MatchedCardsInterface } from "./interfaces/MatchedCardsInterface";
 import { RandomVerbsListInterface } from "./interfaces/RandomVerbsListInterface";
+
+import "./styles/AppStyles.css";
 
 function App() {
   const levels: LevelInterface[] = [
