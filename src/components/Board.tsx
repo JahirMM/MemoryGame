@@ -35,7 +35,6 @@ function Board({
   );
 
   const combinedVerbs = board.flat();
-  const jsConfetti = new JSConfetti();
 
   useEffect(() => {
     if (
@@ -66,6 +65,7 @@ function Board({
     }
 
     if (matchedCards.length === totalVerbs / 2) {
+      const jsConfetti = new JSConfetti();
       jsConfetti.addConfetti();
     }
   }, [firstVerbSelected, secondVerbSelected, randomVerbsList]);
