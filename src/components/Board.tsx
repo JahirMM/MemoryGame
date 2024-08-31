@@ -1,3 +1,5 @@
+import JSConfetti from "js-confetti";
+
 // INTERFACES
 import { RandomVerbsListInterface } from "../interfaces/RandomVerbsListInterface";
 import { MatchedCardsInterface } from "../interfaces/MatchedCardsInterface";
@@ -33,12 +35,13 @@ function Board({
   );
 
   const combinedVerbs = board.flat();
+  const jsConfetti = new JSConfetti();
 
   useEffect(() => {
     if (
       firstVerbSelected &&
       secondVerbSelected &&
-      matchedCards.length < totalVerbs
+      matchedCards.length < totalVerbs / 2
     ) {
       const matchedVerb = randomVerbsList.find(
         (item) =>
@@ -60,6 +63,10 @@ function Board({
         setSecondVerbSelected("");
         setRevealedCards([]);
       }, 500);
+    }
+
+    if (matchedCards.length === totalVerbs / 2) {
+      jsConfetti.addConfetti();
     }
   }, [firstVerbSelected, secondVerbSelected, randomVerbsList]);
 
