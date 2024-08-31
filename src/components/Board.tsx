@@ -32,8 +32,7 @@ function Board({ board, randomVerbsList, totalVerbs }: BoardInterface) {
       );
 
       if (matchedVerb) {
-        const newMatchedCards = [...revealedCards];
-        setMatchedCards((prev) => [...prev, ...newMatchedCards]);
+        setMatchedCards((prev) => [...prev, ...revealedCards]);
       }
       setTimeout(() => {
         setFirstVerbSelected("");
@@ -41,8 +40,10 @@ function Board({ board, randomVerbsList, totalVerbs }: BoardInterface) {
         setRevealedCards([]);
       }, 500);
     }
+    console.log(matchedCards);
   }, [firstVerbSelected, secondVerbSelected, randomVerbsList]);
 
+  // Verifica que el verbo seleccionado sea pareja con su verbo en pasado
   const isMatchingPastForm = (
     verb: RandomVerbsListInterface,
     selectedVerb: string
@@ -50,7 +51,12 @@ function Board({ board, randomVerbsList, totalVerbs }: BoardInterface) {
     return verb.forms.past === selectedVerb;
   };
 
+  // Primero valida que la carta está seleccionada o si se encuentra ya en pareja
+  // Posteriormente se guarda la primera carta seleccionada y la segunda carta
   const handleClick = (verb: string, index: number) => {
+    if (revealedCards.includes(index) || matchedCards.includes(index)) {
+      return;
+    }
     if (!firstVerbSelected) {
       setFirstVerbSelected(verb);
       setRevealedCards([index]);

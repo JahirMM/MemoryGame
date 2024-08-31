@@ -1,18 +1,15 @@
+import { useRemoveCorrectClass } from "../hooks/useRemoveCorrectClass";
 import "../styles/ResetGameStyle.css";
 
 interface ResetGameProps {
   rows: number;
   columns: number;
   generateBoard: (rows: number, columns: number) => void;
-  removeCorrectClass: () => void;
 }
 
-function ResetGame({
-  rows,
-  columns,
-  generateBoard,
-  removeCorrectClass,
-}: ResetGameProps) {
+function ResetGame({ rows, columns, generateBoard }: ResetGameProps) {
+  const { removeCorrectClass } = useRemoveCorrectClass();
+
   const handleResetGame = () => {
     generateBoard(rows, columns);
     removeCorrectClass();

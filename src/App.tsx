@@ -5,19 +5,14 @@ import verbs from "./data/verbs.json";
 
 // COMPONETS
 import Board from "./components/Board";
+import ResetGame from "./components/ResetGame";
 import LevelSelector from "./components/LevelSelector";
 
 // INTERFACES
 import { RandomVerbsListInterface } from "./interfaces/RandomVerbsListInterface";
 import { LevelInterface } from "./interfaces/LevelInterface";
-import ResetGame from "./components/ResetGame";
-
-// HOOK
-import { useRemoveCorrectClass } from "./hooks/useRemoveCorrectClass";
 
 function App() {
-  const { removeCorrectClass } = useRemoveCorrectClass();
-
   const levels: LevelInterface[] = [
     {
       level: "Easy",
@@ -112,12 +107,7 @@ function App() {
         randomVerbsList={randomVerbsList}
         totalVerbs={totalVerbs}
       />
-      <ResetGame
-        rows={rows}
-        columns={columns}
-        generateBoard={generateBoard}
-        removeCorrectClass={removeCorrectClass}
-      />
+      <ResetGame rows={rows} columns={columns} generateBoard={generateBoard} />
     </>
   );
 }
