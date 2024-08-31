@@ -15,6 +15,7 @@
   border-radius: 20px;
   font-size: 20px;
   height: var(--cardHeight);
+  width: var(--cardWidth);
   transition: 0.25s;
 }
 
@@ -23,7 +24,7 @@
   position: absolute;
   inset: 0;
   background-color: var(--cardHiddenColor);
-  transition: 0.25s;
+  transition: 1s;
   transform: rotateY(0deg);
   backface-visibility: hidden;
   border-radius: 20px;
@@ -48,6 +49,18 @@
 
 @media (max-width: 800px) {
   .board {
-    grid-template-columns: repeat(auto-fit, minmax(var(--cardWidth), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    justify-items: center;
+  }
+
+  .board-card {
+    height: 100px;
+    width: 80px;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+
+  .board-card::after {
+    border-radius: 10px;
   }
 }

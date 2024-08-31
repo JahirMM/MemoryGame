@@ -8,3 +8,9 @@
   background-color: var(--colorButton);
   color: black;
 }
+
+@media (max-width: 800px) {
+  .reset {
+    font-size: 16px;
+  }
+}
