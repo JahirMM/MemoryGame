@@ -1,6 +1,11 @@
-import { Dispatch, SetStateAction, useState } from "react";
+// INTERFACES
 import { LevelInterface } from "../interfaces/LevelInterface";
+import { MatchedCardsInterface } from "../interfaces/MatchedCardsInterface";
+
+// HOOK
 import { useRemoveCorrectClass } from "../hooks/useRemoveCorrectClass";
+
+import { Dispatch, SetStateAction, useState } from "react";
 
 import "../styles/LevelSelector.css";
 
@@ -8,10 +13,21 @@ interface LevelSelectorProps {
   levels: LevelInterface[];
   setRows: Dispatch<SetStateAction<number>>;
   setColumns: Dispatch<SetStateAction<number>>;
+  matchedCards: MatchedCardsInterface[];
+  setMatchedCards: Dispatch<SetStateAction<MatchedCardsInterface[]>>;
 }
 
-function LevelSelector({ levels, setRows, setColumns }: LevelSelectorProps) {
-  const { removeCorrectClass } = useRemoveCorrectClass();
+function LevelSelector({
+  levels,
+  setRows,
+  setColumns,
+  matchedCards,
+  setMatchedCards,
+}: LevelSelectorProps) {
+  const { removeCorrectClass } = useRemoveCorrectClass(
+    matchedCards,
+    setMatchedCards
+  );
   const [selectedLevel, setSelectedLevel] = useState("Easy");
 
   const setCSSVariable = (variable: string, value: string) => {

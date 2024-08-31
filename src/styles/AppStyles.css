@@ -26,17 +26,22 @@ body {
 }
 
 .container {
+  display: flex;
+  gap: 12px;
+  background-color: teal;
+}
+
+.memory-game {
   background-color: var(--containerColor);
   position: relative;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   border-radius: 20px;
   gap: 30px;
   padding: 40px 60px;
 }
 
-.container h1 {
+.memory-game h1 {
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 0.1rem;
@@ -45,7 +50,17 @@ body {
 }
 
 @media (max-width: 600px) {
-  .container {
+  .memory-game {
     padding: 20px 20px;
+    background-color: red;
+  }
+  .container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 843px) {
+  .container {
+    flex-direction: column;
   }
 }

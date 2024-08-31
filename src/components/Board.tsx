@@ -1,19 +1,36 @@
-import { useEffect, useState } from "react";
+// INTERFACES
 import { RandomVerbsListInterface } from "../interfaces/RandomVerbsListInterface";
+import { MatchedCardsInterface } from "../interfaces/MatchedCardsInterface";
+
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 import "../styles/BoardStyles.css";
 
-interface BoardInterface {
+interface BoardProps {
   board: string[][];
   randomVerbsList: RandomVerbsListInterface[];
   totalVerbs: number;
+  matchedCards: MatchedCardsInterface[];
+  setMatchedCards: Dispatch<SetStateAction<MatchedCardsInterface[]>>;
 }
 
-function Board({ board, randomVerbsList, totalVerbs }: BoardInterface) {
+interface RevealedCardsInterface {
+  id: number;
+  verb: string;
+}
+
+function Board({
+  board,
+  randomVerbsList,
+  totalVerbs,
+  matchedCards,
+  setMatchedCards,
+}: BoardProps) {
   const [firstVerbSelected, setFirstVerbSelected] = useState("");
   const [secondVerbSelected, setSecondVerbSelected] = useState("");
-  const [matchedCards, setMatchedCards] = useState<number[]>([]);
-  const [revealedCards, setRevealedCards] = useState<number[]>([]);
+  const [revealedCards, setRevealedCards] = useState<RevealedCardsInterface[]>(
+    []
+  );
 
   const combinedVerbs = board.flat();
 
@@ -32,7 +49,11 @@ function Board({ board, randomVerbsList, totalVerbs }: BoardInterface) {
       );
 
       if (matchedVerb) {
-        setMatchedCards((prev) => [...prev, ...revealedCards]);
+        const data = {
+          presentVerb: matchedVerb.verb,
+          pastVerb: matchedVerb.forms.past,
+        };
+        setMatchedCards((prev) => [...prev, data]);
       }
       setTimeout(() => {
         setFirstVerbSelected("");
@@ -40,7 +61,6 @@ function Board({ board, randomVerbsList, totalVerbs }: BoardInterface) {
         setRevealedCards([]);
       }, 500);
     }
-    console.log(matchedCards);
   }, [firstVerbSelected, secondVerbSelected, randomVerbsList]);
 
   // Verifica que el verbo seleccionado sea pareja con su verbo en pasado
@@ -54,15 +74,20 @@ function Board({ board, randomVerbsList, totalVerbs }: BoardInterface) {
   // Primero valida que la carta está seleccionada o si se encuentra ya en pareja
   // Posteriormente se guarda la primera carta seleccionada y la segunda carta
   const handleClick = (verb: string, index: number) => {
-    if (revealedCards.includes(index) || matchedCards.includes(index)) {
+    if (
+      revealedCards.some((card) => card.id === index) ||
+      matchedCards.some(
+        (card) => card.presentVerb === verb || card.pastVerb === verb
+      )
+    ) {
       return;
     }
     if (!firstVerbSelected) {
       setFirstVerbSelected(verb);
-      setRevealedCards([index]);
+      setRevealedCards([{ id: index, verb: verb }]);
     } else if (!secondVerbSelected) {
       setSecondVerbSelected(verb);
-      setRevealedCards((prev) => [...prev, index]);
+      setRevealedCards((prev) => [...prev, { id: index, verb: verb }]);
     }
   };
 
@@ -74,8 +99,16 @@ function Board({ board, randomVerbsList, totalVerbs }: BoardInterface) {
           id={index + "verb"}
           onClick={() => handleClick(verb, index)}
           className={`board-card ${
-            revealedCards.includes(index) ? "verb-selected" : ""
-          } ${matchedCards.includes(index) ? "correct" : ""}`}
+            revealedCards.some((card) => card.id === index)
+              ? "verb-selected"
+              : ""
+          } ${
+            matchedCards.some(
+              (card) => card.presentVerb === verb || card.pastVerb === verb
+            )
+              ? "correct"
+              : ""
+          }`}
         >
           {verb}
         </div>

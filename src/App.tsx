@@ -7,10 +7,12 @@ import verbs from "./data/verbs.json";
 import Board from "./components/Board";
 import ResetGame from "./components/ResetGame";
 import LevelSelector from "./components/LevelSelector";
+import MatchedPairsList from "./components/MatchedPairsList";
 
 // INTERFACES
-import { RandomVerbsListInterface } from "./interfaces/RandomVerbsListInterface";
 import { LevelInterface } from "./interfaces/LevelInterface";
+import { MatchedCardsInterface } from "./interfaces/MatchedCardsInterface";
+import { RandomVerbsListInterface } from "./interfaces/RandomVerbsListInterface";
 
 function App() {
   const levels: LevelInterface[] = [
@@ -30,6 +32,7 @@ function App() {
       columns: 6,
     },
   ];
+  const [matchedCards, setMatchedCards] = useState<MatchedCardsInterface[]>([]);
 
   const [rows, setRows] = useState(levels[0].rows);
   const [columns, setColumns] = useState(levels[0].columns);
@@ -96,18 +99,33 @@ function App() {
 
   return (
     <>
-      <h1>English memory game</h1>
-      <LevelSelector
-        levels={levels}
-        setRows={setRows}
-        setColumns={setColumns}
-      />
-      <Board
-        board={board}
-        randomVerbsList={randomVerbsList}
-        totalVerbs={totalVerbs}
-      />
-      <ResetGame rows={rows} columns={columns} generateBoard={generateBoard} />
+      <div className="memory-game">
+        <h1>English memory game</h1>
+        <LevelSelector
+          levels={levels}
+          setRows={setRows}
+          setColumns={setColumns}
+          matchedCards={matchedCards}
+          setMatchedCards={setMatchedCards}
+        />
+        <Board
+          board={board}
+          randomVerbsList={randomVerbsList}
+          totalVerbs={totalVerbs}
+          matchedCards={matchedCards}
+          setMatchedCards={setMatchedCards}
+        />
+        <ResetGame
+          rows={rows}
+          columns={columns}
+          generateBoard={generateBoard}
+          matchedCards={matchedCards}
+          setMatchedCards={setMatchedCards}
+        />
+      </div>
+      {matchedCards.length > 0 && (
+        <MatchedPairsList matchedCards={matchedCards} />
+      )}
     </>
   );
 }
