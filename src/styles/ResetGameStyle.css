@@ -1,0 +1,10 @@
+.reset {
+  position: relative;
+  cursor: pointer;
+  text-transform: uppercase;
+  border: none;
+  padding: 15px 20px;
+  font-size: 1.5rem;
+  background-color: var(--colorButton);
+  overflow: hidden;
+}

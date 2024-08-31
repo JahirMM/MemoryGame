@@ -1,6 +1,8 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { LevelInterface } from "../interfaces/LevelInterface";
 import { useRemoveCorrectClass } from "../hooks/useRemoveCorrectClass";
+
+import "../styles/LevelSelector.css";
 
 interface LevelSelectorProps {
   levels: LevelInterface[];
@@ -10,6 +12,7 @@ interface LevelSelectorProps {
 
 function LevelSelector({ levels, setRows, setColumns }: LevelSelectorProps) {
   const { removeCorrectClass } = useRemoveCorrectClass();
+  const [selectedLevel, setSelectedLevel] = useState("Easy");
 
   const setCSSVariable = (variable: string, value: string) => {
     document.documentElement.style.setProperty(variable, value);
@@ -21,26 +24,33 @@ function LevelSelector({ levels, setRows, setColumns }: LevelSelectorProps) {
       setColumns(columns);
       setCSSVariable("--columns", columns.toString());
       removeCorrectClass();
+      setSelectedLevel(level);
     }
     if (level === "Medium") {
       setRows(rows);
       setColumns(columns);
       setCSSVariable("--columns", columns.toString());
       removeCorrectClass();
+      setSelectedLevel(level);
     }
     if (level === "Difficulty") {
       setRows(rows);
       setColumns(columns);
       setCSSVariable("--columns", columns.toString());
       removeCorrectClass();
+      setSelectedLevel(level);
     }
   };
   return (
-    <div>
+    <div className="container-levels">
       {levels.map((item, index) => (
         <button
           key={index}
+          type="button"
           onClick={() => handleChangeLevel(item.level, item.rows, item.columns)}
+          className={`${
+            selectedLevel === item.level ? "selected-level" : ""
+          } level`}
         >
           {item.level}
         </button>

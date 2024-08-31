@@ -100,7 +100,7 @@ function App() {
   }, [rows, columns]);
 
   return (
-    <div className="container">
+    <>
       <h1>English memory game</h1>
       <LevelSelector
         levels={levels}
@@ -118,7 +118,7 @@ function App() {
         generateBoard={generateBoard}
         removeCorrectClass={removeCorrectClass}
       />
-    </div>
+    </>
   );
 }
 

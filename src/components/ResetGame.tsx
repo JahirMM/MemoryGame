@@ -1,3 +1,5 @@
+import "../styles/ResetGameStyle.css";
+
 interface ResetGameProps {
   rows: number;
   columns: number;
@@ -15,7 +17,11 @@ function ResetGame({
     generateBoard(rows, columns);
     removeCorrectClass();
   };
-  return <button onClick={() => handleResetGame()}>reset game</button>;
+  return (
+    <button onClick={() => handleResetGame()} type="button" className="reset">
+      reset game
+    </button>
+  );
 }
 
 export default ResetGame;

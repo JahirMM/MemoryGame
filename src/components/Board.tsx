@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { RandomVerbsListInterface } from "../interfaces/RandomVerbsListInterface";
 
-import "../styles/boardStyles.css";
+import "../styles/BoardStyles.css";
 
 interface BoardInterface {
   board: string[][];
