@@ -27,7 +27,7 @@ function App() {
       columns: 5,
     },
     {
-      level: "Difficulty",
+      level: "Difficult",
       rows: 5,
       columns: 6,
     },

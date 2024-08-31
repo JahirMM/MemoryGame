@@ -49,7 +49,7 @@ function LevelSelector({
       removeCorrectClass();
       setSelectedLevel(level);
     }
-    if (level === "Difficulty") {
+    if (level === "Difficult") {
       setRows(rows);
       setColumns(columns);
       setCSSVariable("--columns", columns.toString());

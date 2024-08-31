@@ -1,15 +1,40 @@
-.partner-list {
+.pairs-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
   border-radius: 20px;
-  padding: 20px;
+  padding: 40px 20px;
   color: white;
   background-color: var(--containerColor);
 }
 
+.pairs-list h2 {
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+.pair-item {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 12px;
+  padding: 10px;
+  background-color: #181b23;
+}
+
+.pair-item-title {
+  font-weight: bold;
+}
+
+.pair-item-content {
+  margin-top: 5px;
+}
+
+.pair-item-present,
+.pair-item-past {
+  display: block;
+}
+
 @media (max-width: 600px) {
-  .partner-list {
-    padding: 20px 20px;
+  .pairs-list {
+    padding: 20px;
   }
 }

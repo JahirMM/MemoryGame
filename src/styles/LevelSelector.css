@@ -15,6 +15,7 @@
   padding: 4px 0px;
   border-radius: 5px;
   font-weight: bold;
+  color: black;
 }
 
 .level::after {
