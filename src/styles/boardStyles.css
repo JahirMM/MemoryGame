@@ -30,6 +30,10 @@
   border-radius: 20px;
 }
 
+.board-card:hover::after {
+  scale: 1.1;
+}
+
 .board-card.verb-selected {
   transform: rotateY(0deg);
 }

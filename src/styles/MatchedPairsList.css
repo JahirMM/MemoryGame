@@ -4,6 +4,8 @@
   border-radius: 20px;
   padding: 40px 20px;
   color: white;
+  max-height: 950px;
+  overflow-y: auto;
   background-color: var(--containerColor);
 }
 
